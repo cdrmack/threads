@@ -1,5 +1,5 @@
 CFLAGS = -std=c23 -g -Wall -Werror
-# LDFLAGS = -pthread
+LDFLAGS = -pthread
 
 %.o:%.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
