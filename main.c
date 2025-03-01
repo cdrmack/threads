@@ -5,10 +5,10 @@
 
 void *foo(void *)
 {
-    while (true)
+    for (size_t i = 0; i < 8; ++i)
     {
-        puts("foo");
         sleep(1);
+        printf("[foo] %zu/8\n", i + 1);
     }
 
     return NULL;
@@ -16,10 +16,10 @@ void *foo(void *)
 
 void bar()
 {
-    while (true)
+    for (size_t i = 0; i < 2; ++i)
     {
-        puts("bar");
         sleep(2);
+        printf("[bar] %zu/2\n", i + 1);
     }
 }
 
@@ -29,6 +29,8 @@ int main()
     pthread_create(&foo_thread, NULL, foo, NULL);
 
     bar();
+
+    pthread_join(foo_thread, NULL);
 
     return EXIT_SUCCESS;
 }

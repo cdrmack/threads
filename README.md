@@ -1,4 +1,4 @@
-Refreshing my knowledge about `fork(2)`.
+Refreshing my knowledge about `pthread(3)`.
 
 ```sh
 gmake
