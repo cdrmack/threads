@@ -1,4 +1,4 @@
-Refreshing my knowledge about `pthread(3)`.
+Refreshing my knowledge about threads in C.
 
 ```sh
 gmake
