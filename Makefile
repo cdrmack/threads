@@ -1,27 +1,17 @@
+SOURCES = 01_create_join.c 02_input_output.c 03_mutex.c 04_semaphore.c
+
 CFLAGS = -std=c23 -g -Wall -Werror
 LDFLAGS = -pthread
 
-%.o:%.c
-	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
+# create a target for each source file
+TARGETS = $(SOURCES:.c=)
 
-all: 01_create_join 02_input_output 03_mutex 04_semaphore
-	@echo build complete
+all: $(TARGETS)
 
-01_create_join: 01_create_join.o
-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $^
-
-02_input_output: 02_input_output.o
-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $^
-
-03_mutex: 03_mutex.o
-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $^
-
-04_semaphore: 04_semaphore.o
-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $^
+%: %.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $<
 
 clean:
-	rm -f *.o
-	rm -f 01_create_join
-	rm -f 02_input_output
-	rm -f 03_mutex
-	rm -f 04_semaphore
+	rm -f $(TARGETS)
+
+.PHONY: all clean
