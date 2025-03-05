@@ -4,7 +4,7 @@ LDFLAGS = -pthread
 %.o:%.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
 
-all: 01_create_join 02_input_output 03_mutex
+all: 01_create_join 02_input_output 03_mutex 04_semaphore
 	@echo build complete
 
 01_create_join: 01_create_join.o
@@ -16,8 +16,12 @@ all: 01_create_join 02_input_output 03_mutex
 03_mutex: 03_mutex.o
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
+04_semaphore: 04_semaphore.o
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $^
+
 clean:
 	rm -f *.o
 	rm -f 01_create_join
 	rm -f 02_input_output
 	rm -f 03_mutex
+	rm -f 04_semaphore
